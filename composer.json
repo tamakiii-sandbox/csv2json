@@ -1,4 +1,6 @@
 {
     "name": "tamakiii-sandbox/csv2json",
-    "require": {}
+    "require": {
+        "league/csv": "^9.6"
+    }
 }
