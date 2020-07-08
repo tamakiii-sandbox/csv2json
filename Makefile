@@ -16,7 +16,7 @@ build:
 	docker build -t $(NAME) --progress=plain .
 
 sh:
-	docker run -it -v $$(pwd):/tmp -w /tmp $(NAME) $@
+	docker run -it -v ~/.composer:/root/.composer -v $$(pwd):/tmp -w /tmp $(NAME) $@
 
 clean:
 	docker image rm -f $(NAME)
