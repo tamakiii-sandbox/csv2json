@@ -1,22 +1,17 @@
-.PHONY: help install dependencies bash clean
-
-NAME := redash
+.PHONY: help install dependencies clean
 
 help:
 	@cat $(firstword $(MAKEFILE_LIST))
 
 install: \
 	dependencies \
-	build
+	vendor
 
 dependencies:
-	type docker > /dev/null
+	type php > /dev/null
 
-build:
-	docker build -t $(NAME) --progress=plain .
-
-sh:
-	docker run -it -v ~/.composer:/root/.composer -v $$(pwd):/tmp -w /tmp $(NAME) $@
+vendor:
+	composer install
 
 clean:
-	docker image rm -f $(NAME)
+	rm -rf vendor
